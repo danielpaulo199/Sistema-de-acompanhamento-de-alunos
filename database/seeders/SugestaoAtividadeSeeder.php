@@ -51,6 +51,15 @@ class SugestaoAtividadeSeeder extends Seeder
             ],
             [
                 'categoria' => 'escrita',
+                'titulo' => 'Relato de Experiência Pessoal',
+                'descricao' => 'Nesta atividade, você deverá escrever um pequeno texto contando uma experiência marcante que viveu recentemente. O objetivo é praticar a escrita de forma livre, organizando ideias e desenvolvendo a comunicação escrita.',
+                'materiais' => 'Caderno ou folha A4, caneta ou editor de texto',
+                'passo_a_passo' => "1. Escolha uma experiência real que aconteceu com você nos últimos dias\n2. Escreva um texto entre 15 e 20 linhas\n3. Descreva onde aconteceu, quem estava presente e como você se sentiu\n4. Organize o texto com início, meio e fim\n5. Revise apenas para garantir que o texto esteja legível\n6. Traga a atividade pronta no próximo dia de aula",
+                'duracao_minutos' => 20,
+                'nivel_dificuldade' => 'baixo',
+            ],
+            [
+                'categoria' => 'escrita',
                 'titulo' => 'Reescrita de Histórias',
                 'descricao' => 'Alunos reescrevem contos conhecidos mudando personagens, época ou final. Desenvolve criatividade e fluência.',
                 'materiais' => 'Conto original impresso, folhas pautadas',

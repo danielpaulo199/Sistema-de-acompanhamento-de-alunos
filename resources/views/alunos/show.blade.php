@@ -693,9 +693,16 @@
                                 </div>
                                 <div class="sugestao-body">
                                     <div class="sugestao-descricao">{{ $sugestao->descricao }}</div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-top:0.5rem;">
                                     <button class="sugestao-expandir" onclick="toggleDetalhes(this)">
                                         ▼ Ver detalhes completos
                                     </button>
+                                    <a href="{{ route('alunos.sugestoes.imprimir', [$aluno, $sugestao]) }}"
+                                       target="_blank"
+                                       class="btn btn-secondary btn-sm">
+                                        🖨️ Imprimir atividade
+                                    </a>
+                                </div>
                                     <div class="sugestao-detalhes">
                                         @if($sugestao->materiais)
                                         <div class="detalhe-titulo">📦 Materiais necessários</div>
