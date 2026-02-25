@@ -13,7 +13,10 @@ class AlunoController extends Controller
     public function index()
     {
         $alunos = Aluno::withCount(['dificuldades', 'qualidades'])->orderBy('nome')->get();
-        return view('alunos.index', compact('alunos'));
+        $alunosMatutino = $alunos->where('turno', 'matutino')->values();
+        $alunosVespertino = $alunos->where('turno', 'vespertino')->values();
+        $alunosSemTurno = $alunos->whereNull('turno')->values();
+        return view('alunos.index', compact('alunos', 'alunosMatutino', 'alunosVespertino', 'alunosSemTurno'));
     }
 
     public function create()

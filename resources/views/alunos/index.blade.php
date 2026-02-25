@@ -196,6 +196,52 @@
         margin-bottom: 1.5rem;
     }
 
+    /* SEÇÕES POR TURNO */
+    .turno-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .turno-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .turno-section-title {
+        font-family: 'Fraunces', serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--cinza-escuro);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .turno-section-title .turno-badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.25rem 0.65rem;
+        border-radius: 20px;
+        background: var(--verde-menta);
+        color: var(--verde);
+    }
+
+    .turno-section-title.turno-vespertino .turno-badge {
+        background: var(--amarelo-claro);
+        color: #B7791F;
+    }
+
+    .turno-section-title.turno-sem-turno .turno-badge {
+        background: var(--cinza-claro);
+        color: var(--cinza);
+    }
+
+    .empty-turno {
+        color: var(--cinza);
+        font-size: 0.9rem;
+        padding: 1rem 0;
+        font-style: italic;
+    }
+
     @media (max-width: 640px) {
         .turma-stats { grid-template-columns: 1fr; }
     }
@@ -238,40 +284,123 @@
     </div>
 </div>
 
-<div class="alunos-grid">
-    @foreach($alunos as $aluno)
-    <a href="{{ route('alunos.show', $aluno) }}" class="aluno-card">
-        <div class="aluno-card-top">
-            <div class="aluno-avatar">
-                @if($aluno->foto)
-                    <img src="{{ asset('storage/' . $aluno->foto) }}" alt="{{ $aluno->nome }}">
-                @else
-                    <div class="aluno-initials">{{ $aluno->initials }}</div>
-                @endif
+<div class="turno-section">
+    <h2 class="turno-section-title">
+        🌅 Turno Matutino
+        <span class="turno-badge">{{ $alunosMatutino->count() }} aluno{{ $alunosMatutino->count() != 1 ? 's' : '' }}</span>
+    </h2>
+    @if($alunosMatutino->count() > 0)
+    <div class="alunos-grid">
+        @foreach($alunosMatutino as $aluno)
+        <a href="{{ route('alunos.show', $aluno) }}" class="aluno-card">
+            <div class="aluno-card-top">
+                <div class="aluno-avatar">
+                    @if($aluno->foto)
+                        <img src="{{ asset('storage/' . $aluno->foto) }}" alt="{{ $aluno->nome }}">
+                    @else
+                        <div class="aluno-initials">{{ $aluno->initials }}</div>
+                    @endif
+                </div>
             </div>
-        </div>
-        <div class="aluno-card-body">
-            <div class="aluno-nome">{{ $aluno->nome }}</div>
-            <div class="aluno-stats">
-                <div class="aluno-stat-pill pill-dificuldade">
-                    ⚠️ {{ $aluno->dificuldades_count }} dificuldade{{ $aluno->dificuldades_count != 1 ? 's' : '' }}
-                </div>
-                <div class="aluno-stat-pill pill-qualidade">
-                    ⭐ {{ $aluno->qualidades_count }} qualidade{{ $aluno->qualidades_count != 1 ? 's' : '' }}
-                </div>
-                @if($aluno->turno)
-                    <div class="aluno-stat-pill" style="background: var(--azul-claro); color: var(--azul);">
-                        🕒 {{ ucfirst($aluno->turno) }}
+            <div class="aluno-card-body">
+                <div class="aluno-nome">{{ $aluno->nome }}</div>
+                <div class="aluno-stats">
+                    <div class="aluno-stat-pill pill-dificuldade">
+                        ⚠️ {{ $aluno->dificuldades_count }} dificuldade{{ $aluno->dificuldades_count != 1 ? 's' : '' }}
                     </div>
-                @endif
+                    <div class="aluno-stat-pill pill-qualidade">
+                        ⭐ {{ $aluno->qualidades_count }} qualidade{{ $aluno->qualidades_count != 1 ? 's' : '' }}
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="aluno-card-footer">
-            Ver perfil completo →
-        </div>
-    </a>
-    @endforeach
+            <div class="aluno-card-footer">
+                Ver perfil completo →
+            </div>
+        </a>
+        @endforeach
+    </div>
+    @else
+    <p class="empty-turno">Nenhum aluno no turno matutino.</p>
+    @endif
 </div>
+
+<div class="turno-section">
+    <h2 class="turno-section-title turno-vespertino">
+        🌆 Turno Vespertino
+        <span class="turno-badge">{{ $alunosVespertino->count() }} aluno{{ $alunosVespertino->count() != 1 ? 's' : '' }}</span>
+    </h2>
+    @if($alunosVespertino->count() > 0)
+    <div class="alunos-grid">
+        @foreach($alunosVespertino as $aluno)
+        <a href="{{ route('alunos.show', $aluno) }}" class="aluno-card">
+            <div class="aluno-card-top">
+                <div class="aluno-avatar">
+                    @if($aluno->foto)
+                        <img src="{{ asset('storage/' . $aluno->foto) }}" alt="{{ $aluno->nome }}">
+                    @else
+                        <div class="aluno-initials">{{ $aluno->initials }}</div>
+                    @endif
+                </div>
+            </div>
+            <div class="aluno-card-body">
+                <div class="aluno-nome">{{ $aluno->nome }}</div>
+                <div class="aluno-stats">
+                    <div class="aluno-stat-pill pill-dificuldade">
+                        ⚠️ {{ $aluno->dificuldades_count }} dificuldade{{ $aluno->dificuldades_count != 1 ? 's' : '' }}
+                    </div>
+                    <div class="aluno-stat-pill pill-qualidade">
+                        ⭐ {{ $aluno->qualidades_count }} qualidade{{ $aluno->qualidades_count != 1 ? 's' : '' }}
+                    </div>
+                </div>
+            </div>
+            <div class="aluno-card-footer">
+                Ver perfil completo →
+            </div>
+        </a>
+        @endforeach
+    </div>
+    @else
+    <p class="empty-turno">Nenhum aluno no turno vespertino.</p>
+    @endif
+</div>
+
+@if($alunosSemTurno->count() > 0)
+<div class="turno-section">
+    <h2 class="turno-section-title turno-sem-turno">
+        📋 Sem turno definido
+        <span class="turno-badge">{{ $alunosSemTurno->count() }} aluno{{ $alunosSemTurno->count() != 1 ? 's' : '' }}</span>
+    </h2>
+    <div class="alunos-grid">
+        @foreach($alunosSemTurno as $aluno)
+        <a href="{{ route('alunos.show', $aluno) }}" class="aluno-card">
+            <div class="aluno-card-top">
+                <div class="aluno-avatar">
+                    @if($aluno->foto)
+                        <img src="{{ asset('storage/' . $aluno->foto) }}" alt="{{ $aluno->nome }}">
+                    @else
+                        <div class="aluno-initials">{{ $aluno->initials }}</div>
+                    @endif
+                </div>
+            </div>
+            <div class="aluno-card-body">
+                <div class="aluno-nome">{{ $aluno->nome }}</div>
+                <div class="aluno-stats">
+                    <div class="aluno-stat-pill pill-dificuldade">
+                        ⚠️ {{ $aluno->dificuldades_count }} dificuldade{{ $aluno->dificuldades_count != 1 ? 's' : '' }}
+                    </div>
+                    <div class="aluno-stat-pill pill-qualidade">
+                        ⭐ {{ $aluno->qualidades_count }} qualidade{{ $aluno->qualidades_count != 1 ? 's' : '' }}
+                    </div>
+                </div>
+            </div>
+            <div class="aluno-card-footer">
+                Ver perfil completo →
+            </div>
+        </a>
+        @endforeach
+    </div>
+</div>
+@endif
 
 @else
 <div class="empty-state">
