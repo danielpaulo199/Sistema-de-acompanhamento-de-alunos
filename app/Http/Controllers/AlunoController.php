@@ -128,6 +128,11 @@ class AlunoController extends Controller
         return redirect()->route('alunos.show', $aluno)->with('success', 'Característica removida!');
     }
 
+    public function imprimirSugestao(Aluno $aluno, SugestaoAtividade $sugestao)
+    {
+        return view('alunos.imprimir-sugestao', compact('aluno', 'sugestao'));
+    }
+
     private function getCategorias()
     {
         return [
