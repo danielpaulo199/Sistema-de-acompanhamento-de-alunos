@@ -251,7 +251,7 @@
 @section('content')
 <div class="page-header">
     <div>
-        <h1 class="page-title">Minha Turma</h1>
+        <h1 class="page-title">Minhas Turmas</h1>
         <p class="page-subtitle">Clique em um aluno para ver o perfil completo e sugestões de atividades</p>
     </div>
     <a href="{{ route('alunos.create') }}" class="btn btn-primary">

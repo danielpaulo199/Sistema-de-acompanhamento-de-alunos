@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HorarioController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect()->route('alunos.index');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('horarios/editar', [HorarioController::class, 'edit'])->name('horarios.edit');
+Route::put('horarios', [HorarioController::class, 'update'])->name('horarios.update');
 
 Route::resource('alunos', AlunoController::class);
 
