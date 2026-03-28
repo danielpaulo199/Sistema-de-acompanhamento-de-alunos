@@ -347,7 +347,7 @@
 <body>
 
 <nav class="navbar">
-    <a href="{{ route('alunos.index') }}" class="navbar-brand">
+    <a href="{{ route('home') }}" class="navbar-brand">
         <div class="navbar-logo">📚</div>
         <div>
             <div class="navbar-title">Profe Andressa</div>
@@ -355,8 +355,10 @@
         </div>
     </a>
     <div class="navbar-actions">
-        <a href="{{ route('alunos.index') }}" class="btn-nav">🏠 Turma</a>
-        <a href="{{ route('alunos.create') }}" class="btn-nav">+ Novo Aluno</a>
+        <a href="{{ route('home') }}" class="btn-nav">🏠 Início</a>
+        <a href="{{ route('alunos.index') }}" class="btn-nav">👥 Turmas</a>
+        <a href="{{ route('horarios.edit') }}" class="btn-nav">📅 Horários</a>
+        <a href="{{ route('alunos.create') }}" class="btn-nav">👹 Cadastrar Aluno</a>
     </div>
 </nav>
 
