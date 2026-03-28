@@ -138,8 +138,7 @@ class HorariosService
 
     public static function agoraBr(): Carbon
     {
-        // return Carbon::now('America/Sao_Paulo');
-        return Carbon::create(2026, 3, 27, 8, 15, 0, 'America/Sao_Paulo');
+        return Carbon::now('America/Sao_Paulo');
     }
 
     /**
