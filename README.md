@@ -1,7 +1,7 @@
-# 🎒 Sistema de Acompanhamento de Alunos — 5º Ano
+# 🎒 Sistema de Acompanhamento de Alunos
 
-Sistema web desenvolvido em Laravel para acompanhamento pedagógico de alunos do 5º ano.
-Permite cadastrar alunos, registrar suas dificuldades e qualidades, e recebe sugestões de atividades personalizadas.
+Sistema web desenvolvido em Laravel para acompanhamento pedagógico de alunos.
+Permite cadastrar alunos, registrar suas dificuldades e qualidades, e oferece sugestões de atividades personalizadas.
 
 ---
 
@@ -11,7 +11,8 @@ Permite cadastrar alunos, registrar suas dificuldades e qualidades, e recebe sug
 - ✅ **Perfil completo de cada aluno** com histórico de dificuldades e qualidades
 - ✅ **Registro de características** por categoria (Leitura, Escrita, Matemática, etc.) e nível (Baixo, Médio, Alto)
 - ✅ **Sugestões automáticas de atividades** baseadas nas dificuldades cadastradas
-- ✅ **Painel da turma** com visão geral de todos os alunos
+- ✅ **Painel das turmas** com visão geral de todos os alunos
+- ✅ **Horários das turmas** com indicação das aulas ministradas e de planejamento
 
 ---
 
@@ -87,55 +88,3 @@ php artisan serve
 ```
 http://localhost:8000
 ```
-
----
-
-## 🗂️ Categorias de Dificuldades/Qualidades disponíveis
-
-| Categoria | Sugestões Automáticas |
-|-----------|----------------------|
-| Leitura | ✅ 3 atividades |
-| Escrita | ✅ 3 atividades |
-| Matemática | ✅ 3 atividades |
-| Interpretação de Texto | ✅ 2 atividades |
-| Cálculo Mental | ✅ 1 atividade |
-| Atenção / Concentração | ✅ 2 atividades |
-| Comportamento | ✅ 1 atividade |
-| Socialização | ✅ 1 atividade |
-| Criatividade | ✅ 1 atividade |
-| Raciocínio Lógico | ✅ 1 atividade |
-| Oralidade | ✅ 1 atividade |
-| Ciências | ✅ 1 atividade |
-| História e Geografia | (sem sugestão pré-cadastrada) |
-| Artes | (sem sugestão pré-cadastrada) |
-
----
-
-## 💡 Como usar
-
-1. **Acesse** `http://localhost:8000`
-2. **Cadastre os alunos** clicando em "➕ Novo Aluno"
-3. **Clique em um aluno** para abrir o perfil completo
-4. **Adicione dificuldades e qualidades** usando o botão "Adicionar Dificuldade ou Qualidade"
-5. **Veja as sugestões** na aba "💡 Sugestões de Atividades" — elas aparecem automaticamente baseadas nas dificuldades cadastradas!
-
----
-
-## 🛠️ Problemas comuns
-
-**Erro: "Could not find driver"**
-→ Habilite a extensão `php_pdo_sqlite` no seu php.ini
-
-**Erro: "Storage link already exists"**
-→ Ignore, já está configurado
-
-**Fotos não aparecem**
-→ Certifique-se de que executou `php artisan storage:link`
-
----
-
-## 📁 Estrutura do Banco de Dados
-
-- **alunos** — Dados dos alunos
-- **caracteristicas** — Dificuldades e qualidades de cada aluno
-- **sugestoes_atividades** — Banco de atividades pré-cadastradas por categoria
